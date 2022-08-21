@@ -1,0 +1,15 @@
+.cell {
+    display: flex;
+    width: 64px;
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+}
+
+.dark {
+    background-color: #000;
+}
+
+.light {
+    background-color: #e3b778;
+}
