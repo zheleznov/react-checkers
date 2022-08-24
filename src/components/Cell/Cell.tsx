@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import './Cell.css';
-import { Labels } from '../../models/Labels';
-import { mergeClasses } from '../../utils/utils';
+import { Labels } from 'models/Labels';
+import { mergeClasses } from 'utils/utils';
 
 type CellProps = {
     label: Labels;

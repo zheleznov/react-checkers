@@ -1,7 +1,7 @@
 import { Labels } from './Labels';
-import BoardModel from './BoardModel';
+import { BoardModel } from './BoardModel';
 
-export default class CellModel {
+class CellModel {
     readonly x: number;
     readonly y: number;
     readonly label: Labels;
@@ -18,3 +18,5 @@ export default class CellModel {
         this.key = `${String(x)}${String(y)}`;
     }
 }
+
+export { CellModel };

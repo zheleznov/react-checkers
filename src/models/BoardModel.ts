@@ -1,11 +1,11 @@
-import CellModel from './CellModel';
+import { CellModel } from './CellModel';
 import { Labels } from './Labels';
 
-export default class BoardModel {
+class BoardModel {
     cells: CellModel[][] = [];
     cellsInRow = 8;
 
-    initCells() {
+    createCells() {
         for (let i = 0; i < this.cellsInRow; i += 1) {
             const row: CellModel[] = [];
 
@@ -20,3 +20,5 @@ export default class BoardModel {
         }
     }
 }
+
+export { BoardModel };

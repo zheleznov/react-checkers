@@ -1,7 +1,7 @@
 import React, { Fragment, ReactElement } from 'react';
 import './Board.css';
 import { Cell } from '../Cell';
-import BoardModel from '../../models/BoardModel';
+import { BoardModel } from 'models/BoardModel';
 
 type BoardProps = {
     board: BoardModel;
