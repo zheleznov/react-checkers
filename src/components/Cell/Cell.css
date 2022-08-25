@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+.icon {
+    width: 64px;
+    height: 64px;
+}
+
 .dark {
     background-color: #000;
 }

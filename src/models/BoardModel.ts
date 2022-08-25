@@ -1,5 +1,6 @@
 import { CellModel } from './CellModel';
 import { Labels } from './Labels';
+import { FigureModel } from 'models/FigureModel';
 
 class BoardModel {
     cells: CellModel[][] = [];
@@ -18,6 +19,14 @@ class BoardModel {
             }
             this.cells.push(row);
         }
+    }
+
+    getCell(x: number, y: number): CellModel {
+        return this.cells[y][x];
+    }
+
+    addFigure(label: Labels, x: number, y: number) {
+        new FigureModel(label, this.getCell(x, y));
     }
 }
 

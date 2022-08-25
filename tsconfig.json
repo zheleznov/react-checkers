@@ -19,7 +19,8 @@
         "paths": {
             "components/*": ["./components/*"],
             "models/*": ["./models/*"],
-            "utils/*": ["./utils/*"]
+            "utils/*": ["./utils/*"],
+            "images/*": ["./images/*"]
         }
     },
     "include": ["src"]
