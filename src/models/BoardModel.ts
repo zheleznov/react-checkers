@@ -25,8 +25,16 @@ class BoardModel {
         return this.cells[y][x];
     }
 
-    addFigure(label: Labels, x: number, y: number) {
-        new FigureModel(label, this.getCell(x, y));
+    addFigures() {
+        this.cells.forEach((row, rowIndex) => {
+            row.forEach((cell, cellIndex) => {
+                if (rowIndex <= 2 && cell.label === Labels.Dark) {
+                    new FigureModel(Labels.Dark, this.getCell(cellIndex, rowIndex)); // add dark pieces to first 3 rows
+                } else if (rowIndex >= this.cells.length - 3 && cell.label === Labels.Dark) {
+                    new FigureModel(Labels.Light, this.getCell(cellIndex, rowIndex)); // add light pieces to last 3 rows
+                }
+            });
+        });
     }
 }
 
