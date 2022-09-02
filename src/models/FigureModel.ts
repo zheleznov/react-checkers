@@ -1,7 +1,7 @@
 import { Labels } from 'models/Labels';
 import { CellModel } from 'models/CellModel';
-import pieceImgLight from 'images/light.png';
-import pieceImgDark from 'images/brown.png';
+import pieceImgLight from 'images/light.svg';
+import pieceImgDark from 'images/brown.svg';
 import { FigureNames } from 'models/FigureNames';
 
 class FigureModel {
