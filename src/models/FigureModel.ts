@@ -19,6 +19,10 @@ class FigureModel {
         this.name = FigureNames.Piece;
         this.imageSrc = label === Labels.Light ? pieceImgLight : pieceImgDark;
     }
+
+    canMove(targetCell: CellModel): boolean {
+        return !targetCell.figure;
+    }
 }
 
 export { FigureModel };

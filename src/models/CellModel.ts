@@ -20,6 +20,13 @@ class CellModel {
         this.key = `${String(x)}${String(y)}`;
         this.figure = null; // null by default
     }
+
+    moveFigure(targetCell: CellModel) {
+        if (this.figure && this.figure.canMove(targetCell)) {
+            targetCell.figure = this.figure; // set figure on target cell
+            this.figure = null; // clean current cell
+        }
+    }
 }
 
 export { CellModel };

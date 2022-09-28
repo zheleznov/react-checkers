@@ -53,3 +53,10 @@
 .light {
     background-color: #e3b778;
 }
+
+.available {
+    background-color: #fff;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}

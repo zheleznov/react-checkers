@@ -21,6 +21,20 @@ class BoardModel {
         }
     }
 
+    highlightCells(selectedCell: CellModel | null) {
+        this.cells.forEach((row) => {
+            row.forEach((cell) => {
+                cell.available = !!selectedCell?.figure?.canMove(cell);
+            });
+        });
+    }
+
+    getNewBoard(): BoardModel {
+        const newBoard = new BoardModel();
+        newBoard.cells = this.cells;
+        return newBoard;
+    }
+
     getCell(x: number, y: number): CellModel {
         return this.cells[y][x];
     }

@@ -9,7 +9,7 @@ type CellProps = {
     rowIndex: number;
     cellIndex: number;
     selected: boolean;
-    onFigureClick: (cell: CellModel) => void;
+    onCellClick: (cell: CellModel) => void;
 };
 
 export const Cell = ({
@@ -17,22 +17,20 @@ export const Cell = ({
     rowIndex,
     cellIndex,
     selected,
-    onFigureClick,
+    onCellClick,
 }: CellProps): ReactElement => {
     const { figure, label } = cell;
 
-    const handleFigureClick = () => onFigureClick(cell);
+    const handleFigureClick = () => onCellClick(cell);
 
     return (
-        <div className={mergeClasses('cell', label, selected ? 'selected' : '')}>
-            {figure?.imageSrc && (
-                <img
-                    className="icon"
-                    src={figure.imageSrc}
-                    alt={figure.name}
-                    onClick={handleFigureClick}
-                />
-            )}
+        <div
+            className={mergeClasses('cell', label, selected ? 'selected' : '')}
+            onClick={handleFigureClick}
+        >
+            {figure?.imageSrc && <img className="icon" src={figure.imageSrc} alt={figure.name} />}
+
+            {cell.available && !cell.figure && <div className="available" />}
 
             {(rowIndex === 0 || rowIndex === 7) && (
                 <div className={mergeClasses('board-label', rowIndex === 0 ? 'top' : 'bottom')}>

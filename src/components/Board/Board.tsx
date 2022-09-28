@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement, useState } from 'react';
+import React, { Fragment, ReactElement, useEffect, useState } from 'react';
 import './Board.css';
 import { Cell } from '../Cell';
 import { BoardModel } from 'models/BoardModel';
@@ -9,14 +9,32 @@ type BoardProps = {
     onSetBoard: (board: BoardModel) => void;
 };
 
-export const Board = ({ board }: BoardProps): ReactElement => {
-    const [selected, setSelected] = useState<CellModel>();
+export const Board = ({ board, onSetBoard }: BoardProps): ReactElement => {
+    const [selected, setSelected] = useState<CellModel | null>(null);
 
-    const handleFigureClick = (cell: CellModel) => {
-        if (cell.figure) {
+    const updateBoard = () => {
+        const updatedBoard = board.getNewBoard();
+        onSetBoard(updatedBoard);
+    };
+
+    const highlightCells = () => {
+        board.highlightCells(selected);
+        updateBoard();
+    };
+
+    const handleCellClick = (cell: CellModel) => {
+        if (selected && selected !== cell && selected.figure?.canMove(cell)) {
+            selected.moveFigure(cell);
+            setSelected(null);
+            updateBoard();
+        } else {
             setSelected(cell);
         }
     };
+
+    useEffect(() => {
+        highlightCells();
+    }, [selected]);
 
     return (
         <div className="board">
@@ -29,7 +47,7 @@ export const Board = ({ board }: BoardProps): ReactElement => {
                             rowIndex={rowIndex}
                             cellIndex={cellIndex}
                             selected={selected?.x === cell.x && selected.y === cell.y} // check if selected cell coords equal to rendered cell
-                            onFigureClick={handleFigureClick}
+                            onCellClick={handleCellClick}
                         />
                     ))}
                 </Fragment>
