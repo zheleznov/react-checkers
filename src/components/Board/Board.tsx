@@ -3,13 +3,21 @@ import './Board.css';
 import { Cell } from '../Cell';
 import { BoardModel } from 'models/BoardModel';
 import { CellModel } from 'models/CellModel';
+import { PlayerModel } from 'models/PlayerModel';
 
 type BoardProps = {
     board: BoardModel;
+    currentPlayer: PlayerModel;
+    onChangePlayer: () => void;
     onSetBoard: (board: BoardModel) => void;
 };
 
-export const Board = ({ board, onSetBoard }: BoardProps): ReactElement => {
+export const Board = ({
+    board,
+    currentPlayer,
+    onChangePlayer,
+    onSetBoard,
+}: BoardProps): ReactElement => {
     const [selected, setSelected] = useState<CellModel | null>(null);
 
     const updateBoard = () => {
@@ -26,9 +34,13 @@ export const Board = ({ board, onSetBoard }: BoardProps): ReactElement => {
         if (selected && selected !== cell && selected.figure?.canMove(cell)) {
             selected.moveFigure(cell);
             setSelected(null);
+            onChangePlayer(); // change player after we move the figure
             updateBoard();
         } else {
-            setSelected(cell);
+            if (cell.figure?.label === currentPlayer.label) {
+                // we can only select our figures
+                setSelected(cell);
+            }
         }
     };
 

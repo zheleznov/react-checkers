@@ -4,4 +4,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+.player {
+    height: 60px;
+    text-transform: capitalize;
+    font-weight: 600;
 }

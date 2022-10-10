@@ -12,9 +12,9 @@ class BoardModel {
 
             for (let j = 0; j < this.cellsInRow; j += 1) {
                 if ((i + j) % 2 !== 0) {
-                    row.push(new CellModel(i, j, Labels.Dark, this)); // black
+                    row.push(new CellModel(j, i, Labels.Dark, this)); // black
                 } else {
-                    row.push(new CellModel(i, j, Labels.Light, this)); // white
+                    row.push(new CellModel(j, i, Labels.Light, this)); // white
                 }
             }
             this.cells.push(row);

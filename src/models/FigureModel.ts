@@ -21,7 +21,7 @@ class FigureModel {
     }
 
     canMove(targetCell: CellModel): boolean {
-        return !targetCell.figure;
+        return this.cell.isForwardCell(targetCell, this);
     }
 }
 
